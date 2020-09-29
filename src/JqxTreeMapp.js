@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ///import 'font-awesome/css/font-awesome.min.css';
 
-class TreeMap11 extends React.PureComponent {
+class TreeMap extends React.PureComponent {
 
 
 
@@ -270,4 +270,4 @@ class TreeMap11 extends React.PureComponent {
 
 }
 
-export default TreeMap11;
+export default TreeMap;
