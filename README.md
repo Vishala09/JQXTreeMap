@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -9,60 +7,280 @@ In the project directory, you can run:
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+DEMO  :   http://mathgoteasy.com/demos/
 
-### `npm test`
+CODE:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+import * as React from "react";
 
-### `npm run build`
+import 'jqwidgets-scripts/jqwidgets/styles/jqx.base.css';
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+import 'jqwidgets-scripts/jqwidgets/styles/jqx.material-purple.css';
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+import JqxTreeMap, { ITreeMapProps } from 'jqwidgets-scripts/jqwidgets-react-tsx/jqxtreemap';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+import jsondata from "./TreemapData.json";
 
-### `npm run eject`
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+///import 'font-awesome/css/font-awesome.min.css';
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+class TreeMap extends React.PureComponent {
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    getChildrenData = function (id) {
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        this.state.source.map((data, key) => {
 
-### Code Splitting
+            if (data.label.includes('Go Back')) {
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+                if (data.record.id === id) {
 
-### Analyzing the Bundle Size
+                    console.log(id, data)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+                    this.setState({
 
-### Making a Progressive Web App
+                        source: data.record.parent
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+                    });
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+                }
 
-### Deployment
+            }
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+            else
 
-### `npm run build` fails to minify
+                if (data.record.id == id) {
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+                    console.log(id, this.state.source[key]['record']['id'], data.record.children)
+
+                    if (data.record.children != undefined) {
+
+                        if (!this.state.source[key]['record']['children'][0].label.includes('Go Back')) {
+
+
+                            this.state.source[key]['record']['children'].unshift({
+
+                                label: `Go Back `,
+
+                                value: 50,
+
+                                color: '#000000',
+
+                                record: {
+
+                                    id: id + 'gb',
+
+                                    ticket: '',
+
+                                    percent: '',
+
+                                    state: '',
+
+                                    parent: this.state.source
+
+                                },
+
+
+
+
+                            })
+
+                        }
+
+
+                        this.setState({
+
+                            source: data.record.children
+
+                        });
+
+                    }
+
+
+                }
+
+        })
+
+        this.changeValue();
+
+    };
+
+   changeValue = function(){
+
+    let elems = document.querySelectorAll('.jqx-widget')[0].childNodes;
+
+    let source = [...this.state.source];
+
+    for(let i=0;i<elems.length;i++)
+
+    {
+
+        let isOverflowing = elems[i].clientWidth < elems[i].scrollWidth || elems[i].clientHeight < elems[i].scrollHeight;
+
+        
+
+        if(isOverflowing)
+
+        {  
+
+                    let value = this.state.source[i].value;
+
+                    let item = {...source[i]};    
+
+                    item.value = elems[i].scrollHeight;
+
+                    source[i] = item;
+
+                    this.setState({source:source});
+
+        }
+
+    }
+
+   }
+
+    componentDidMount(){
+
+        
+
+        this.changeValue();
+
+    }
+
+    constructor() {
+
+        super();
+
+        this.state = {
+
+              treeheight:200,
+
+            renderCallbacks: {
+
+                "*": (element, data) => {
+
+                    element.css({
+
+                        color: "#ffffff",
+
+                        border: "1px solid white",
+
+                    });
+
+                   if(data.label.includes('Go Back'))
+
+                   {
+
+                    element.html(
+                       '<div style="font-size: 13px;verticalAlign:bottom,bottom:0px" class="grab">' +
+
+                        "<span  style='font-size:15px;'>" +
+
+                        data.label +  `<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>` +
+
+                        "</div>"
+
+                    );
+
+                   }
+
+                   else
+
+                   {
+
+                    element.html(
+
+                        //  getchildren(data.record.id)   onClick="'+getchildren(data.record.id)+'"  this.gettt.bind(this)
+
+
+
+
+                        '<div id='+data.record.id+' style="font-size: 13px;verticalAlign:bottom,bottom:0px" class="grab">' +
+
+                        "<span   style='font-size:15px;color:black;font-weight:bold'>" +
+
+                        data.label +
+
+                        "</span>" +
+
+                        "<br/>" +
+
+                        "<span style='font-size:20px;'>" +
+
+                        data.record.ticket +
+
+                        " " +
+
+                        "</span>" +
+
+                        ` <i class="fa fa-level-down" aria-hidden="true"></i>` + data.record.percent +
+
+                        " " +
+
+                        data.record.state +
+
+                        "</div>"
+
+
+                    );
+
+                   }
+
+
+                    element.click(() => this.getChildrenData(data.record.id));
+
+                    
+
+                    return true;
+
+                },
+
+
+
+
+            },
+
+            source: jsondata
+
+        };
+
+    }
+
+
+
+
+    render() {
+
+     return (
+            <div>
+
+                <h1>Tree Map</h1>
+                <h3>Allocates size based on number you specify</h3>
+                <h3>Clicking on any item retireves it's children</h3>
+
+                <JqxTreeMap
+
+                    width={"TreeMap"}
+
+                    style={{ position: 'relative',cursor:'pointer' }}
+
+                    height={this.state.treeheight}
+
+                    source={this.state.source}
+
+                    renderCallbacks={this.state.renderCallbacks}
+
+                />
+            </div>
+
+        );
+
+    }
+
+}
+
+export default TreeMap;
