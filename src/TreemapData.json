@@ -1,0 +1,214 @@
+[
+    {
+       "color": "#DD3A46",
+       "label": "Google",
+       "value": 309,
+       
+       "record": {
+          "id": "100",
+          "percent": "90%",
+          "state": "Higher Usage",
+          "ticket": "309 Tickets",
+          "children": [
+             {
+                "color": "#DD3A46",
+                "label": "Best Search Engine",
+                "value": 400,
+                
+                "record": {
+                    "id": "200",
+                   "percent": "100%",
+                   "state": "Uses awesome machine learning",
+                   "ticket": "400 Tickets",
+                   "children": [
+                      {
+                         "color": "#F59709",
+                         "label": "Best Chrome Extensions",
+                         "value": 100,
+                         
+                         "record": {
+                            "id": "200",
+                            "percent": "100%",
+                            "state": "Highly used",
+                            "ticket": "100 Tickets"
+                         }
+                      },
+                      {
+                         "color": "#DD3A46",
+                         "label": "Chrome history",
+                         "value": 200,
+                         
+                         "record": {
+                            "id": "201",
+                            "percent": "100%",
+                            "state": "Stores all the history efficiently",
+                            "ticket": "200 Tickets"
+                         }
+                      },
+                      {
+                         "color": "#F59709",
+                         "label": "Chrome background",
+                         "value": 81,
+                        
+                         "record": {
+                            "id": "201",
+                            "percent": "100%",
+                            "state": "Custom chrome background",
+                            "ticket": "81 Tickets"
+                         }
+                      }
+                   ]
+                }
+             },
+             {
+                "color": "#F59709",
+                "label": "Google Translate",
+                "value": 400,
+                
+                "record": {
+                    "id": "201",
+                   "percent": "100%",
+                   "state": "Translates to more than 30 languages",
+                   "ticket": "500 Tickets"
+                }
+             }
+          ]
+       }
+    },
+    {
+       "color": "#F59709",
+       "label": "Mozilla Firefox",
+       "value": 253,
+       
+       "record": {
+          "id": "101",
+          "percent": "80%",
+          "state": "higher usage",
+          "ticket": "253 Tickets",
+          "children": [
+             {
+                "color": "#F59709",
+                "label": "FireFox History",
+                "value": 100,
+                
+                "record": {
+                   "id": "200",
+                   "percent": "10%",
+                   "state": "Best history",
+                   "ticket": "100 Tickets"
+                }
+             },
+             {
+                "color": "yellow",
+                "label": "FireFox Search Engine",
+                "value": 130,
+                
+                "record": {
+                    "id": "201",
+                   "percent": "80%",
+                   "state": "Good search mechanism",
+                   "ticket": "130 Tickets"
+                }
+             }
+          ]
+       }
+    },
+    {
+       "color": "#DD3A46",
+       "label": "Microdoft Edge",
+       "value": 78,
+       
+       "record": {
+          "id": "102",
+          "percent": "50%",
+          "state": "High usage",
+          "ticket": "78 Tickets",
+          "children": [
+             {
+                "color": "gray",
+                "label": "Awesome search engine",
+                "value": 100,
+                
+                "record": {
+                    "id": "200",
+                   "percent": "50%",
+                   "state": "highly used",
+                   "ticket": "100 Tickets"
+                }
+             },
+             {
+                "color": "green",
+                "label": "Microsoft Edge History",
+                "value": 100,
+                
+                "record": {
+                    "id": "201",
+                   "percent": "70%",
+                   "state": "Good usage",
+                   "ticket": "100 Tickets"
+                }
+             }
+          ]
+       }
+    },
+    {
+       "color": "#F59709",
+       "label": "Internet Explorer",
+       "value": 68,
+       
+       "record": {
+          "id": "103",
+          "percent": "10%",
+          "state": "Average usage",
+          "ticket": "68 Tickets"
+       }
+    },
+    {
+       "color": "#F59709",
+       "label": "Bing",
+       "value": 78,
+       
+       "record": {
+          "id": "104",
+          "percent": "60%",
+          "state": "Used in phone",
+          "ticket": "78 Tickets"
+       }
+    },
+    {
+       "color": "#1DCB70",
+       "label": "Safari",
+       "value": 98,
+       
+       "record": {
+         "id": "105",
+          "percent": "100%",
+          "state": "Used in apple devices",
+          "ticket": "98 Tickets"
+       }
+    },
+    {
+       "color": "#F59709",
+       "label": "Opera",
+       "value": 58,
+      
+       "record": {
+        "id": "106",
+          "percent": "40%",
+          "state": "less usage",
+          "ticket": "58 Tickets"
+       }
+    },
+    {
+       "color": "#1DCB70",
+       "label": "Yahoo",
+       "value": 10,
+       
+       "record": {
+        "id": "107",
+          "percent": "10%",
+          "state": "Less usage",
+          "ticket": "10 Tickets"
+       }
+    }
+ ]
