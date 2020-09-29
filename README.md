@@ -1,10 +1,8 @@
-## Available Scripts
+## JQXTreeMap  -  Size of each div will be based on size you specify. Here we use ticket numbers. If you click on an element , it retrieves it's child and has a go back button
 
 In the project directory, you can run:
 
 ### `npm start`
-
-Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 <b>JQXTreeMap</b>
